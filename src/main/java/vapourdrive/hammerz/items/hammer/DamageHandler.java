@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import teamroots.embers.util.EmberInventoryUtil;
 import vapourdrive.hammerz.config.ConfigOptions;
 import vapourdrive.hammerz.handlers.UpgradeManager;
 import vazkii.botania.api.mana.ManaItemHandler;
@@ -16,7 +17,7 @@ import static vapourdrive.hammerz.items.hammer.EnergyHandler.getEmpoweredment;
 public class DamageHandler
 {
 	public static final int MANA_PER_DAMAGE = 60;
-	
+
 	public static boolean handleDamage(boolean force, IBlockState state, ItemStack stack, EntityLivingBase entityLiving)
 	{
 		return requestDamage(force, state, stack, entityLiving, 1);
@@ -44,6 +45,11 @@ public class DamageHandler
 		{
 			return handleEnergyDamage(force, state, stack, damage, entityLiving);
 		}
+		else if(HammerInfoHandler.getUsesEmber(stack))
+		{
+			return handleEmberDamage(force, stack, damage, entityLiving);
+		}
+
 		return handleRegularDamage(force, stack, damage, entityLiving);
 	}
 
@@ -108,6 +114,15 @@ public class DamageHandler
 	private static boolean handleManaDamage(boolean force, ItemStack stack, int damage, EntityLivingBase entityLiving)
 	{
 		if (!ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) entityLiving, MANA_PER_DAMAGE, true))
+		{
+			return handleRegularDamage(force, stack, damage, entityLiving);
+		}
+		return true;
+	}
+
+	private static boolean handleEmberDamage(boolean force, ItemStack stack, int damage, EntityLivingBase entityLiving)
+	{
+		if(!(EmberInventoryUtil.getEmberTotal((EntityPlayer) entityLiving) < 0))
 		{
 			return handleRegularDamage(force, stack, damage, entityLiving);
 		}

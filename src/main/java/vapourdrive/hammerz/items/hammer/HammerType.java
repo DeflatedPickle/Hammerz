@@ -84,9 +84,11 @@ public class HammerType
 		return damageType != -1;
 	}
 	public boolean getUsesMana()
+
 	{
 		return damageType == 1;
 	}
+
 	public boolean getUsesEnergy()
 	{
 		return damageType == 2;
@@ -94,6 +96,10 @@ public class HammerType
 	public boolean getCanRepair()
 	{
 		return damageType == 3;
+	}
+	public boolean getUsesEmber()
+	{
+		return  damageType == 4;
 	}
 	public int getMaxEnergy()
 	{

@@ -65,6 +65,13 @@ public class HammerInfoHandler
 		return getHammerType(stack).getUsesMana();
 	}
 
+	public static boolean getUsesEmber(ItemStack stack){
+		if(getHammerType(stack) == null){
+			return false;
+		}
+		return getHammerType(stack).getUsesEmber();
+	}
+
 	public static boolean getUsesEnergy(ItemStack stack)
 	{
 		if (getHammerType(stack) == null)

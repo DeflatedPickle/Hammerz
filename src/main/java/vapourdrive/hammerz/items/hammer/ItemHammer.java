@@ -39,6 +39,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Level;
 
+import teamroots.embers.item.IEmberChargedTool;
 import vapourdrive.hammerz.Hammerz;
 import vapourdrive.hammerz.Reference;
 import vapourdrive.hammerz.config.ConfigOptions;
@@ -61,9 +62,10 @@ import javax.annotation.Nullable;
 		@Optional.Interface(modid = "thaumcraft", iface = "thaumcraft.api.items.IRepairableExtended", striprefs = true),
 		@Optional.Interface(modid = "thaumcraft", iface = "thaumcraft.api.items.IWarpingGear", striprefs = true),
 		@Optional.Interface(modid = "botania", iface = "vazkii.botania.api.mana.ManaItemHandler", striprefs = true),
-		@Optional.Interface(modid = "redstoneflux", iface = "cofh.redstoneflux.api.IEnergyContainerItem", striprefs = true)
+		@Optional.Interface(modid = "redstoneflux", iface = "cofh.redstoneflux.api.IEnergyContainerItem", striprefs = true),
+		@Optional.Interface(modid = "embers", iface = "teamroots.embers.item.IEmberChargedTool", striprefs = true)
 })
-public class ItemHammer extends ItemPickaxe implements IEnergyContainerItem, IManaUsingItem
+public class ItemHammer extends ItemPickaxe implements IEnergyContainerItem, IManaUsingItem, IEmberChargedTool
 {
 	public static final String HammerKey = "Hammerz.HammerType";
 	public static final String Tag_DarkSteelEnergy = "Hammerz.hammer.darkhammer.energy";
@@ -346,6 +348,12 @@ public class ItemHammer extends ItemPickaxe implements IEnergyContainerItem, IMa
 		return HammerInfoHandler.getUsesMana(stack);
 	}
 
+	@Override
+	public boolean hasEmber(ItemStack stack) {
+		return HammerInfoHandler.getUsesEmber(stack);
+	}
+
+
 	/*@Override
 	public boolean doRepair(ItemStack stack, EntityPlayer player, int enchantlevel)
 	{
@@ -369,6 +377,7 @@ public class ItemHammer extends ItemPickaxe implements IEnergyContainerItem, IMa
     {
         return stack.isItemEnchanted() ? HammerInfoHandler.getEnchantedRarity(stack) : HammerInfoHandler.getRarity(stack);
     }
+
 
 	/*@Override
 	public int getWarp(ItemStack stack, EntityPlayer player)

@@ -9,6 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.Level;
+import teamroots.embers.util.EmberInventoryUtil;
 import vapourdrive.hammerz.Hammerz;
 import vapourdrive.hammerz.utils.RandomUtils;
 
@@ -18,6 +19,9 @@ public class ItemUseHandler
 	public static EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float floatx,
 			float floaty, float floatz)
 	{
+		/*if(HammerInfoHandler.getUsesEmber(player.getHeldItemMainhand())){
+			return handleEmberUse(player, world, pos, hand, side, floatx, floaty, floatz);
+		}*/
 		return handleRegularUse(player, world, pos, hand, side, floatx, floaty, floatz);
 	}
 
@@ -45,6 +49,17 @@ public class ItemUseHandler
 		}
 		return EnumActionResult.PASS;
 	}
+
+	/*private static EnumActionResult handleEmberUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float floatx, float floaty, float floatz)
+	{
+		if(HammerInfoHandler.getUsesEmber(player.getHeldItemMainhand()) && EmberInventoryUtil.getEmberTotal(player) > 0)
+		{
+			EmberInventoryUtil.removeEmber(player, 5.0D);
+			return EnumActionResult.SUCCESS;
+
+		}
+		return EnumActionResult.FAIL;
+	}*/
 
 	private static EnumActionResult handleRegularUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float floatx,
 			float floaty, float floatz)

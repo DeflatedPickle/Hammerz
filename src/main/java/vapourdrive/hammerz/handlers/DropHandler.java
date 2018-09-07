@@ -8,7 +8,10 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Enchantments;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -81,6 +84,7 @@ public class DropHandler
 				List<ItemStack> clusterList = OreDictionary.getOres(name.replace("ore", "cluster"));
 				if(!clusterList.isEmpty())
 				{
+					harvester.world.playSound(null, harvester.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS,1.0F,1.0F);
 					ItemStack cluster = clusterList.get(0);
 					if(cluster != null)
 					{

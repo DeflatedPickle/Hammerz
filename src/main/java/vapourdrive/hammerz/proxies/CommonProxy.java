@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Level;
 
 import vapourdrive.hammerz.Hammerz;
 import vapourdrive.hammerz.compat.BotaniaCompat;
+import vapourdrive.hammerz.compat.EmbersCompat;
 import vapourdrive.hammerz.compat.ThaumcraftCompat;
 import vapourdrive.hammerz.config.ConfigHandler;
 import vapourdrive.hammerz.creativetabs.HZCreativeTab;
@@ -59,11 +60,14 @@ public class CommonProxy
 		}
 		if (Loader.isModLoaded("thaumcraft"))
 		{
-			//ThaumcraftCompat.init();
+			ThaumcraftCompat.init();
 		}
 		if (Loader.isModLoaded("botania"))
 		{
 			BotaniaCompat.init();
+		}
+		if(Loader.isModLoaded("embers")){
+			EmbersCompat.init();
 		}
 	}
 }

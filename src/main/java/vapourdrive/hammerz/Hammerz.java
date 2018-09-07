@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import vapourdrive.hammerz.proxies.CommonProxy;
 import vapourdrive.hammerz.utils.RandomUtils;
 
-@Mod(modid = Reference.ModID, version = Reference.Version, name = Reference.Name, dependencies = "after:betterwithmods;after:techreborn;after:thaumcraft;after:botania;after:funores", acceptedMinecraftVersions = "1.10.2")
+@Mod(modid = Reference.ModID, version = Reference.Version, name = Reference.Name, dependencies = "after:betterwithmods;after:techreborn;after:thaumcraft;after:botania;after:funores;after:embers", acceptedMinecraftVersions = "1.12.2")
 public class Hammerz
 {
 	public static boolean hasStorageBlock = false;

@@ -1,38 +1,23 @@
 package vapourdrive.hammerz.compat;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Optional;
-
-import org.apache.logging.log4j.Level;
-
-/*import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.InfusionRecipe;
-import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.api.research.ResearchItem;
-import thaumcraft.api.research.ResearchPage;*/
-import vapourdrive.hammerz.Hammerz;
 import vapourdrive.hammerz.items.HZ_Items;
-import vapourdrive.hammerz.utils.RandomUtils;
 
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.research.ResearchCatagories", striprefs = true)
-public class ThaumcraftCompat
-{
-	/*public static void init()
-	{
-		Hammerz.log.log(Level.INFO, "Initializing Thaumcraft Research Module");
-		ThaumcraftApi.registerObjectTag(new ItemStack(HZ_Items.ItemHammer), new AspectList().add(Aspect.TOOL, 8));
+public class ThaumcraftCompat {
+    public static void init() {
+        ThaumcraftApi.registerObjectTag(new ItemStack(HZ_Items.ItemHammer), new AspectList().add(Aspect.TOOL, 8));
 
-		ResearchCategories.registerCategory("HAMMERZ", null, new ResourceLocation("hammerz", "textures/misc/hammerzTab.png"),
+		/*ResearchCategories.registerCategory("HAMMERZ", null, new ResourceLocation("hammerz", "textures/misc/hammerztab.png"),
 				new ResourceLocation("hammerz:textures/misc/research.png"), new ResourceLocation("thaumcraft:textures/gui/gui_research_back_over.png"));
 
 		AspectList list = new AspectList().add(Aspect.TOOL, 3).add(Aspect.METAL, 2).add(Aspect.EXCHANGE, 2);
 
-		ResearchCategories.addResearch(getResearchItem("THAUMIUM_HAMMER", list, -2, 0, 0, RandomUtils.getHammer("thaumium"),
+		ResearchManager.addResearch(getResearchItem("THAUMIUM_HAMMER", list, -2, 0, 0, RandomUtils.getHammer("thaumium"),
 				Recipes.recipes.get("thaumium"), null, new String[]
 				{
 					"METALLURGY"
@@ -47,13 +32,13 @@ public class ThaumcraftCompat
 
 		InfusionRecipe infusionRecipe = addElementalHammerRecipe();
 		AspectList list3 = new AspectList().add(Aspect.TOOL, 4).add(Aspect.FIRE, 2).add(Aspect.SENSES, 3);
-		ResearchCategories.addResearch(getResearchItem("ELEMENTAL_HAMMER", list3, 2, 0, 3, RandomUtils.getHammer("thaumium_elemental"), null,
+		/*ResearchCategories.addResearch(getResearchItem("ELEMENTAL_HAMMER", list3, 2, 0, 3, RandomUtils.getHammer("thaumium_elemental"), null,
 				infusionRecipe, new String[]
 				{
 					"ELEMENTALTOOLS"
-				}));
+				})};
 
-		if (Loader.isModLoaded("ForbiddenMagic"))
+        if (Loader.isModLoaded("ForbiddenMagic"))
 		{
 			InfusionRecipe infusionRecipe2 = addChameleonHammerRecipe();
 			AspectList list4 = new AspectList().add(Aspect.TOOL, 4).add(Aspect.BEAST, 3).add(Aspect.ELDRITCH, 2);
@@ -90,21 +75,34 @@ public class ThaumcraftCompat
 		return research;
 	}
 
-	public static InfusionRecipe addElementalHammerRecipe()
-	{
-		ItemStack crystal = new ItemStack(RandomUtils.getItemStackFromString("Thaumcraft", "shard", 1).getItem(), 1, 1);
-		ItemStack log = new ItemStack(RandomUtils.getItemStackFromString("Thaumcraft", "log", 1).getItem(), 1, 0);
-		ItemStack ThaumPick = RandomUtils.getItemStackFromString("Thaumcraft", "elemental_pick", 1);
-		AspectList aspects = new AspectList().add(Aspect.FIRE, 38).add(Aspect.METAL, 38).add(Aspect.SENSES, 38);
+	public static void InfusionRecipes()
+        {
+
+            ItemStack crystal = new ItemStack(RandomUtils.getItemStackFromString("Thaumcraft", "shard", 1).getItem(), 1, 1);
+            ItemStack log = new ItemStack(RandomUtils.getItemStackFromString("Thaumcraft", "log", 1).getItem(), 1, 0);
+            ItemStack ThaumPick = RandomUtils.getItemStackFromString("Thaumcraft", "elemental_pick", 1);
+            AspectList aspects = new AspectList().add(Aspect.FIRE, 38).add(Aspect.METAL, 38).add(Aspect.SENSES, 38);
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("hammerz", "elemntal_hammer"), new InfusionRecipe("ELEMENTAL_HAMMER", new ItemStack(RandomUtils.getHammer("thaumium_elemental"), 2, aspects, ThaumPick, new ItemStack[]
+                    {
+                            new ItemStack(Blocks.DIAMOND_BLOCK), crystal, crystal, crystal, log, log
+                    })));
+        };
+
+
+
+
+
 
 		return ThaumcraftApi.addInfusionCraftingRecipe("ELEMENTAL_HAMMER", RandomUtils.getHammer("thaumium_elemental"), 2, aspects,
 				RandomUtils.getHammer("thaumium"), new ItemStack[]
 				{
-						ThaumPick, new ItemStack(Blocks.diamond_block), crystal, crystal, crystal, crystal, log, log
-				});
-	}
+						ThaumPick, new ItemStack(Blocks.DIAMOND_BLOCK), crystal, crystal, crystal, crystal, log, log
+				});*/
 
-	public static InfusionRecipe addChameleonHammerRecipe()
+
+
+	/*public static InfusionRecipe addChameleonHammerRecipe()
 	{
 		ItemStack shard = new ItemStack(RandomUtils.getItemStackFromString("ForbiddenMagic", "NetherShard", 1).getItem(), 1, 1);
 		ItemStack log = new ItemStack(RandomUtils.getItemStackFromString("Thaumcraft", "ItemResource", 1).getItem(), 1, 3);
@@ -116,6 +114,6 @@ public class ThaumcraftCompat
 				RandomUtils.getHammer("thaumium"), new ItemStack[]
 				{
 						ChameleonHammer, new ItemStack(Blocks.diamond_block), shard, shard, shard, log, log, quicksilver, quicksilver
-				});
-	}*/
+				});Z*/
+    }
 }
