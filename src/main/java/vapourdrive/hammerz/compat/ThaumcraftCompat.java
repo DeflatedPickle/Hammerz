@@ -1,16 +1,20 @@
 package vapourdrive.hammerz.compat;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Optional;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchCategories;
 import vapourdrive.hammerz.items.HZ_Items;
 
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.research.ResearchCatagories", striprefs = true)
 public class ThaumcraftCompat {
     public static void init() {
         ThaumcraftApi.registerObjectTag(new ItemStack(HZ_Items.ItemHammer), new AspectList().add(Aspect.TOOL, 8));
+        ResearchCategories.registerCategory("HAMMERZ", (String)null,new AspectList(),new ResourceLocation("hammerz","textures/misc/hammerztab.png"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_1.jpg"),new ResourceLocation("thaumcraft", "textures/gui/gui_research_back_over.png"));
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation("hammerz", "research/hammerz"));
 
 		/*ResearchCategories.registerCategory("HAMMERZ", null, new ResourceLocation("hammerz", "textures/misc/hammerztab.png"),
 				new ResourceLocation("hammerz:textures/misc/research.png"), new ResourceLocation("thaumcraft:textures/gui/gui_research_back_over.png"));
