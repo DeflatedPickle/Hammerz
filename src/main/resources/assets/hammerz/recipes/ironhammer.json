@@ -15,7 +15,6 @@
     }
   },
   "result": {
-    "item": "hammerz:item.hammer",
-	"data": 0
+    "hammertype": "iron"
   }
 }

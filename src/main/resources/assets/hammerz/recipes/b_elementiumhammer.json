@@ -16,7 +16,6 @@
     }
   },
   "result": {
-    "item": "hammerz:item.hammer",
-	"data": 0
+    "hammertype": "b_elementium"
   }
 }

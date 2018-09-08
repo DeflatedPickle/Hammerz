@@ -2,6 +2,10 @@ package vapourdrive.hammerz.compat;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+import teamroots.embers.research.ResearchBase;
+import teamroots.embers.research.ResearchCategory;
+import teamroots.embers.research.ResearchManager;
 import vapourdrive.hammerz.items.HZ_Items;
 import vapourdrive.hammerz.items.hammer.ItemHammer;
 import vapourdrive.hammerz.utils.RandomUtils;
@@ -9,8 +13,7 @@ import vapourdrive.hammerz.utils.RandomUtils;
 public class EmbersCompat {
 
 	public static void init() {
-		ItemStack clockworkHammer = new ItemStack(HZ_Items.ItemHammer);
-		NBTTagCompound tagCompound = RandomUtils.getNBT(clockworkHammer);
-		tagCompound.setString(ItemHammer.HammerKey, "clockwork");
+		//ADD RESEARCH REGISTRY FOR CLOCKWORK HAMMER
+		  ResearchCategory categoryHammerz = new ResearchCategory("hammerz",16.0D);
 	}
 }

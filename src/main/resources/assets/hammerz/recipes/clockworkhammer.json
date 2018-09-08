@@ -1,20 +1,23 @@
 {
 "type": "hammerz:hammer_shaped",
   "pattern": [
-    "HHH",
+    "HEH",
     " / ",
     " / "
   ],
   "key": {
     "H": {
       "type": "forge:ore_dict",
-      "ore": "blockBronze"
+      "ore": "blockDawnstone"
     },
     "/": {
       "item": "minecraft:stick"
+    },
+    "E": {
+      "item":"embers:crystal_ember"
     }
   },
   "result": {
-    "hammertype": "bronze"
+    "hammertype": "clockwork"
   }
 }

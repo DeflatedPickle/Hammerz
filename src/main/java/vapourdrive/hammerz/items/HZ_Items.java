@@ -1,5 +1,9 @@
 package vapourdrive.hammerz.items;
 
+import java.util.ArrayList;
+
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -12,7 +16,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
-import org.apache.logging.log4j.Level;
 import thaumcraft.api.ThaumcraftMaterials;
 import vapourdrive.hammerz.Hammerz;
 import vapourdrive.hammerz.config.ConfigOptions;
@@ -22,9 +25,6 @@ import vapourdrive.hammerz.items.hammer.HammerType;
 import vapourdrive.hammerz.items.hammer.ItemHammer;
 import vapourdrive.hammerz.utils.RandomUtils;
 import vazkii.botania.api.BotaniaAPI;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 @Mod.EventBusSubscriber
 public class HZ_Items {
@@ -82,19 +82,12 @@ public class HZ_Items {
 	}
 
 	private static void setupModHammerTypes() {
-		if (Loader.isModLoaded("thaumcraft"))
-		{
+		if (Loader.isModLoaded("thaumcraft")) {
 			Hammerz.log.log(Level.INFO, "ThaumcraftCompat loading");
 			addHammerType(3, 0, "blockThaumium", ThaumcraftMaterials.TOOLMAT_THAUMIUM, EnumRarity.UNCOMMON);
 			addHammerType(3, 0, "blockVoidMetal", ThaumcraftMaterials.TOOLMAT_VOID, EnumRarity.RARE);
 			addHammerType(3, 0, "blockThaumium", ThaumcraftMaterials.TOOLMAT_ELEMENTAL, EnumRarity.RARE);
-
 			Hammerz.hasStorageBlock = true;
-			if (Loader.isModLoaded("ForbiddenMagic"))
-			{
-				Hammerz.log.log(Level.INFO, "Forbidden Magic Compat loading");
-				addHammerType(3, 0, "blockThaumium", ThaumcraftMaterials.TOOLMAT_ELEMENTAL, EnumRarity.EPIC);
-			}
 		}
 		if (Loader.isModLoaded("botania")) {
 			Hammerz.log.log(Level.INFO, "BotaniaCompat loading");
@@ -121,11 +114,22 @@ public class HZ_Items {
 		}
 		if (Loader.isModLoaded("embers")) {
 			Hammerz.log.log(Level.INFO, "Embers Compat loading");
-			addHammerType(4, 1000, "blockDawnstone", "clockwork", 2, 644, 7.5F, 2.5F, 18, EnumRarity.COMMON);
+			addHammerType(4, 0, "blockDawnstone", "clockwork", 2, 644, 7.5F, 2.5F, 18, EnumRarity.COMMON);
 		}
 	}
 
 	public static void registerHammerTypes() {
+
+		for (int i = 0; i < potentialHammerTypes.size(); i++) {
+			HammerType type = potentialHammerTypes.get(i);
+			if (ConfigOptions.OreDictHammerEnabling[i] && (RandomUtils.doesOreNameExist(type.getBlockName()) || RandomUtils.doesBlockExist(type.getBlockName()))) {
+				hammerTypes.add(potentialHammerTypes.get(i));
+			}
+			else {
+				recipes.remove(new ResourceLocation("hammerz:" + type.getName() + "hammer"));
+			}
+		}
+		/*
 		Iterator<HammerType> iterator = potentialHammerTypes.iterator();
 		int i = 0;
 		while (iterator.hasNext()) {
@@ -142,6 +146,7 @@ public class HZ_Items {
 		}
 		//not sure if this is necessary, but the registry is no longer needed, so no reason to keep it around
 		recipes = null;
+		*/
 	}
 
 	public static void addHammerType(int damageType, int maxEnergy, String blockName, ToolMaterial material, EnumRarity rarity) {
