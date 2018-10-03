@@ -1,21 +1,16 @@
 [
 {
-  "modid": "hammerz",
-  "name": "Hammerz",
-  "description": "My take on some simple hammers",
-  "version": "1.11-0.1.4.26",
-  "mcversion": "1.10.2",
+  "modid": "hammerx",
+  "name": "HammerX",
+  "description": "Successor to Hammerz Mod!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authors": [
-    "VapourDrive"
-  ],
-  "credits": "VapourDrive, CrazyPants, Tterrag, MDiyo, BonusBoni, Azanor, Vaskii",
-  "logoFile": "",
-  "screenshots": [
-  ],
-  "parent":"",
-  "dependencies": [
-  ]
+  "authorList": ["Radient_Sora"],
+  "credits": "VapourDrive, theRealP455w0rd",
+  "logoFile": "assets/hammerx/textures/logo/mod_logo.png",
+  "screenshots": [],
+  "dependencies": []
 }
 ]

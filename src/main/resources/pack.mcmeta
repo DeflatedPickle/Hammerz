@@ -1,11 +1,7 @@
 {
-
-   "pack":{
-
-      "pack_format":3,
-
-      "description":"Hammerz resources"
-
-   }
-
+    "pack":
+    {
+        "description": "Hammerx Resources",
+        "pack_format": 3
+    }
 }

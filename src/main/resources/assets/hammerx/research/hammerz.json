@@ -1,0 +1,41 @@
+{
+  "entries": [
+    {
+      "key": "THAUMIUM_HAMMER",
+      "name": "hammerz.research.thaumium_hammer.title",
+      "icon": [
+        "hammerz:textures/items/unity/thaumiumhammer.png"
+      ],
+      "category": "HAMMERZ",
+      "location": [
+        0,
+        0
+      ],
+      "parents": [
+        "METALLURGY@3"
+      ],
+      "meta": ["ROUND"],
+      "stages": [
+        {
+          "text": "hammerz.research_page.THAUMIUM_HAMMER.1"
+        }
+      ]
+    },
+    {
+      "key":"ELEMENTAL_HAMMER",
+      "name": "hammerz.research.elemental_hammer.title",
+      "icon": [
+        "hammerz:textures/items/unity/elementalhammer.png"
+      ],
+      "category":"HAMMERZ","location":[2,-1],
+      "parents":["ELEMENTALTOOLS"],
+      "meta":[],
+      "stages":[
+        {
+          "text":"hammerz.research_page.ELEMENTAL_HAMMER.1"
+        }
+      ]
+
+    }
+  ]
+}
